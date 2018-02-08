@@ -41,7 +41,7 @@ public class genericDAO {
 			try{
 			objeto = em.find(Object.class, cod);
 			}catch (Exception e) {
-	            //se der algo de errado vem parar aqui, onde eh cancelado
+	            //se der algo de errado vem parar aqui, onde é cancelado
 	            em.getTransaction().rollback();
 	            }
 			 finally{

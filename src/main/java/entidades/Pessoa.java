@@ -11,15 +11,16 @@ public class Pessoa {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
-	@Column
+	
 	private String nome;
-	@Column
+	
 	private String cpf;
-	@Column
+	
 	private Date dataNascimento;
-	@Column
+	
 	private String email;
-	@Column
+	
+	@OneToMany
 	private List<Telefone> telefone;
 	
 	public Long getId() {

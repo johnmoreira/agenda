@@ -3,7 +3,9 @@ package servlet;
 import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -23,6 +25,7 @@ public class AgendaServlet extends HttpServlet {
 
 	Pessoa pessoa = new Pessoa();
 	Telefone telefone = new Telefone();
+	List <Telefone> listaTelefone = new ArrayList<Telefone>();
 	PessoaDAO pDAO = new PessoaDAO();
 	TelefoneDAO tDAO = new TelefoneDAO();
 	String mensagem = null;
@@ -57,9 +60,10 @@ public class AgendaServlet extends HttpServlet {
 		try {
 			pessoa.setNome(request.getParameter("pessoaNome"));
 			pessoa.setCpf(request.getParameter("pessoaCpf"));
-			//pessoa.setDataNascimento(request.getParameter("pessoaData"));
 			pessoa.setEmail(request.getParameter("pessoaEmail"));
-			//pessoa.setTelefone(request.getParameter("pessoaTelefone");
+			
+			//listaTelefone.add(request.getParameter("listaTelefone");
+			pessoa.setTelefone(listaTelefone);
 			
 			telefone.setDdd(request.getParameter("foneDdd"));
 			telefone.setNumero(request.getParameter("foneNumero"));

@@ -9,9 +9,9 @@ public class Telefone {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
-	@Column
+	
 	private String ddd;
-	@Column
+	
 	private String numero;
 	
 	public Long getId() {
