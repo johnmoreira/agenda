@@ -19,7 +19,7 @@ import dao.TelefoneDAO;
 import entidades.Pessoa;
 import entidades.Telefone;
 
-@WebServlet("/VendaServlet")
+@WebServlet(name="Agenda Servlet", urlPatterns="/AgendaServlet")
 public class AgendaServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -40,7 +40,7 @@ public class AgendaServlet extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-/*		String acao = request.getParameter("acao");
+		String acao = request.getParameter("acao");
 		
 		switch(acao) {
 		case "salvar": salvar(request, response);
@@ -51,7 +51,7 @@ public class AgendaServlet extends HttpServlet {
 		break;
 		case "deletar": deletar(request, response);
 		break;
-		} */
+		} 
 	}
 
 	
@@ -62,11 +62,22 @@ public class AgendaServlet extends HttpServlet {
 			pessoa.setCpf(request.getParameter("pessoaCpf"));
 			pessoa.setEmail(request.getParameter("pessoaEmail"));
 			
-			//listaTelefone.add(request.getParameter("listaTelefone");
-			pessoa.setTelefone(listaTelefone);
+			String cod[] = request.getParameterValues("lCod");
+			String ddd[] = request.getParameterValues("lDdd");
+			String num[] = request.getParameterValues("lNum");
 			
-			telefone.setDdd(request.getParameter("foneDdd"));
-			telefone.setNumero(request.getParameter("foneNumero"));
+			for(String a : cod) {
+				int c = 1;
+				telefone.setId((long) c);
+				telefone.setDdd(ddd[c]);
+				telefone.setNumero(num[c]);
+				c++;
+				tDAO.salvar(telefone);
+				listaTelefone.add(telefone);
+				System.out.println(listaTelefone);
+			}
+			
+			pessoa.setTelefone(listaTelefone);
 			
 			try {
 				DateFormat df = new SimpleDateFormat("dd/MM/yyyy");					
@@ -76,7 +87,7 @@ public class AgendaServlet extends HttpServlet {
 			}
 			
 			pDAO.salvar(pessoa);
-			tDAO.salvar(telefone);
+			//tDAO.salvar(telefone);
 			} catch (Exception e) {
 				mensagem += e.getMessage();
 			}
@@ -89,8 +100,8 @@ public class AgendaServlet extends HttpServlet {
 				
 			request.setAttribute("mensagem", mensagem);
 			RequestDispatcher rd = request.getRequestDispatcher("resultado.jsp");
-			rd.forward(request, response); 
-	}
+			rd.forward(request, response);  
+		}
 
 	private void consultar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {}
 	

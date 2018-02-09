@@ -1,8 +1,16 @@
 package entidades;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Date;
 import java.util.List;
-import javax.persistence.*;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 @Entity
 @Table(name="pessoa")
@@ -21,7 +29,7 @@ public class Pessoa {
 	private String email;
 	
 	@OneToMany
-	private List<Telefone> telefone;
+	private Collection<Telefone> telefone = new ArrayList<Telefone>();
 	
 	public Long getId() {
 		return id;
@@ -53,10 +61,11 @@ public class Pessoa {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public List<Telefone> getTelefone() {
+	public Collection<Telefone> getTelefone() {
 		return telefone;
 	}
-	public void setTelefone(List<Telefone> telefone) {
+	public void setTelefone(Collection<Telefone> telefone) {
 		this.telefone = telefone;
 	}
+	
 }

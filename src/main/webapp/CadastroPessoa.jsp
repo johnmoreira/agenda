@@ -20,7 +20,7 @@ $(document).ready(function(){
 		var num = $("#telefoneNumero").val();
 		var deleta = "<input type='button' value='deletar' class='remove'/>";
 		cod = cod+1;
-        $("tbody").append("<tr><td>"+cod+"</td><td>"+ddd+"</td><td>"+num+"</td><td>"+deleta+"</td></tr>");
+        $("tbody").append("<tr><td id='lCod'>"+cod+"</td><td id='lDdd'>"+ddd+"</td><td id='lNum'>"+num+"</td><td>"+deleta+"</td></tr>");
 			
     });
 });
@@ -29,7 +29,7 @@ $(document).ready(function(){
 <body>
 
 	<h2>Cadastro de Pessoas</h2>
-		<form method="post" action="agendaServlet?acao=registar">
+		<form method="post" action="AgendaServlet?acao=registar">
 		<div align="center" id="pessoaDIV" class="header">
 		<fieldset>
 			<p><label>Nome:</label><input type="text" id="pessoaNome" placeholder="João"/>
@@ -50,10 +50,6 @@ $(document).ready(function(){
 			</tr>
 			</thead>
 			<tbody>
-				<td>1</td>
-				<td>85</td>
-				<td>8877665544</td>
-				<td><input type='button' value='deletar' class='remove'/></td>
 			</tbody>
 			</table>
 			<input type="submit" value="Cadastrar"/>
